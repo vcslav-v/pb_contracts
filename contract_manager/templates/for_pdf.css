@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'MY';
+    src: url('contract_manager/templates/roboto-regular.ttf');
+
+}
+
+p, h1, h2, h3, h4, li {
+    font-family: "MY";
+    font-size: large;
+  }
