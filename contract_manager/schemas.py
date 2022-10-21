@@ -75,7 +75,7 @@ class Page(BaseModel):
 
 
 class CheckIn(BaseModel):
-    url: str
+    png: bytes
     ident_contract: int
 
 

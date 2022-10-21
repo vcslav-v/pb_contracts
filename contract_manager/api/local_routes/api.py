@@ -119,9 +119,14 @@ def get_page(
 
 @router.post('/add-check')
 def add_check(
-    check_in: schemas.CheckIn,
+    ident_contract: int,
+    check: bytes = File(),
     _: str = Depends(get_current_username)
 ):
+    check_in = schemas.CheckIn(
+        png=check,
+        ident_contract=ident_contract,
+    )
     return db_tools.add_check(check_in)
 
 

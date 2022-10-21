@@ -278,11 +278,10 @@ def get_page() -> schemas.Page:
 
 
 def add_check(check_in: schemas.CheckIn):
-    check = requests.get(check_in.url)
     cipher = Fernet(cipher_key)
     with db.SessionLocal() as session:
         db_contract = session.query(models.Contract).filter_by(id=check_in.ident_contract).first()
-        db_contract.check = cipher.encrypt(check.content)
+        db_contract.check = cipher.encrypt(check_in.png)
         session.commit()
 
 
