@@ -231,7 +231,11 @@ def get_signed_contract(ident: int) -> tuple[str, bytes]:
 def get_page() -> schemas.Page:
     with db.SessionLocal() as session:
         cipher = Fernet(cipher_key)
-        db_contracts = session.query(models.Contract).all()
+        db_contracts = session.query(
+            models.Contract
+        ).order_by(
+            models.Contract.date
+        ).all()
         contracts = []
         for db_contract in db_contracts:
             if db_contract.check and db_contract.signed:
