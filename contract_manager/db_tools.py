@@ -238,8 +238,6 @@ def get_page() -> schemas.Page:
         ).all()
         contracts = []
         for db_contract in db_contracts:
-            if db_contract.check and db_contract.signed:
-                continue
             contracts.append(
                 schemas.ContractInfo(
                     ident=db_contract.id,
